@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["Page","Parquet Page definition."]],"trait":[["PageReader","API for reading pages from a column chunk. This offers a iterator like API to get the next page."]]});

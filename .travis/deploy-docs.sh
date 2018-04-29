@@ -8,6 +8,15 @@ GITHUB_EMAIL=""
 DOC_VERSION=${TRAVIS_TAG:-$TRAVIS_BRANCH}
 echo "Deploying documentation version $DOC_VERSION"
 
+# Check that GITHUB_TOKEN is set
+if [ -z "$GITHUB_TOKEN" ]; then
+  echo "GITHUB_TOKEN is not set.
+        You’ll need to generate a personal access token with the 'public_repo'.
+        Since the token should be private, you’ll want to pass it to Travis securely
+        in your repository settings or via encrypted variables in .travis.yml."
+  exit 1
+fi
+
 if [ -d "target/doc" ]; then
   echo "<meta http-equiv=refresh content=0;url=parquet/index.html>" > ./target/doc/index.html
 

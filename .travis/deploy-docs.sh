@@ -6,6 +6,11 @@ GITHUB_USER="doc-deploy-bot"
 GITHUB_EMAIL=""
 
 DOC_VERSION=${TRAVIS_TAG:-$TRAVIS_BRANCH}
+if [ -z "$DOC_VERSION" ]; then
+  echo "Failed to find documentation version, make sure TRAVIS_TAG or TRAVIS_BRANCH is set"
+  exit 1
+fi
+
 echo "Deploying documentation version $DOC_VERSION"
 
 # Check that GITHUB_TOKEN is set
@@ -34,6 +39,6 @@ if [ -d "target/doc" ]; then
   git push --quiet origin gh-pages > /dev/null 2>&1 &&
   echo "Published documentation $DOC_VERSION" || echo "Failed to publish documentation $DOC_VERSION"
 else
-  echo "Failed to find target/doc directory"
+  echo "Failed to find target/doc directory, have you built the docs?"
   exit 1
 fi

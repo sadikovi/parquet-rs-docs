@@ -18,3 +18,19 @@ rust:
 
 script:
   - cargo build
+
+after_success: |
+  [ $TRAVIS_PULL_REQUEST = false ] &&
+  cargo doc --no-deps &&
+  echo "<meta http-equiv=refresh content=0;url=parquet/index.html>" > ./target/doc/index.html &&
+  mkdir target/doc/master &&
+  mv target/doc/* target/doc/master 2>/dev/null
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  target-branch: gh-pages
+  local-dir: target/doc
+  keep-history: false
+  verbose: true

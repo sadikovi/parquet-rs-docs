@@ -20,20 +20,6 @@ script:
   # - cargo build
   - cargo doc --no-deps
 
-after_success: |
-  [ $TRAVIS_PULL_REQUEST = false ] &&
-  echo "<meta http-equiv=refresh content=0;url=parquet/index.html>" > ./target/doc/index.html &&
-  mkdir target/doc/${TRAVIS_TAG:-$TRAVIS_BRANCH} &&
-  mv target/doc/* target/doc/${TRAVIS_TAG:-$TRAVIS_BRANCH} 2>/dev/null
-
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
-  target-branch: gh-pages
-  local-dir: target/doc
-  keep-history: true
-  verbose: true
-  on:
-    all_branches: true
-    condition: $TRAVIS_PULL_REQUEST = false
+after_success:
+  - '[ $TRAVIS_PULL_REQUEST = false && {$TRAVIS_TAG != "" || $TRAVIS_BRANCH = "master"} ] &&
+    ./.travis/deploy-docs.sh'

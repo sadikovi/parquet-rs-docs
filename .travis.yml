@@ -33,6 +33,4 @@ deploy:
   target-branch: gh-pages
   local-dir: target/doc
   keep-history: true
-  on:
-    branch: gh-pages
   verbose: true

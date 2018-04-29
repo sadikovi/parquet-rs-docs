@@ -21,6 +21,6 @@ script:
   - cargo doc --no-deps
 
 after_success:
-  - '[ $TRAVIS_PULL_REQUEST = false ] &&
-    { [ $TRAVIS_TAG != "" ] || [ $TRAVIS_BRANCH = "master" ]; } &&
+  - '[ "$TRAVIS_PULL_REQUEST" = false ] &&
+    { [ "$TRAVIS_TAG" != "" ] || [ "$TRAVIS_BRANCH" = "master" ]; } &&
     ./.travis/deploy-docs.sh'

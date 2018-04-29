@@ -2,6 +2,9 @@
 
 [![Build Status](https://travis-ci.org/sadikovi/parquet-rs-docs.svg?branch=master)](https://travis-ci.org/sadikovi/parquet-rs-docs)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![API docs](https://img.shields.io/badge/docs-v0.1.0-blue.svg)](https://sadikovi.github.io/parquet-rs-docs/v0.1.0/parquet/)
+[![API docs](https://img.shields.io/badge/docs-v0.2.0-blue.svg)](https://sadikovi.github.io/parquet-rs-docs/v0.2.0/parquet/)
+[![Master API docs](https://img.shields.io/badge/docs-master-green.svg)](https://sadikovi.github.io/parquet-rs-docs/master/parquet/)
 
 An [Apache Parquet](https://parquet.apache.org/) implementation in Rust (work in progress)
 

@@ -35,5 +35,6 @@ deploy:
   keep-history: true
   verbose: true
   on:
-    all_branches: true # allow tags in addition to master branch
-    condition: $TRAVIS_PULL_REQUEST = false && { $TRAVIS_TAG != "" || $TRAVIS_BRANCH = "master" }
+    branch: master
+    condition: $TRAVIS_PULL_REQUEST = false
+    tags: true

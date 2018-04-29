@@ -23,8 +23,8 @@ after_success: |
   [ $TRAVIS_PULL_REQUEST = false ] &&
   cargo doc --no-deps &&
   echo "<meta http-equiv=refresh content=0;url=parquet/index.html>" > ./target/doc/index.html &&
-  mkdir target/doc/master &&
-  mv target/doc/* target/doc/master 2>/dev/null
+  mkdir "target/doc/${TRAVIS_TAG:-$TRAVIS_BRANCH}" &&
+  mv target/doc/* target/doc/${TRAVIS_TAG:-$TRAVIS_BRANCH} 2>/dev/null
 
 deploy:
   provider: pages

@@ -35,6 +35,5 @@ deploy:
   keep-history: true
   verbose: true
   on:
-    branch: master
+    all_branches: true
     condition: $TRAVIS_PULL_REQUEST = false
-    tags: true
